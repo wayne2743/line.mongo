@@ -38,6 +38,7 @@ public class LineMongoController {
 	LineBotClient lineBotClient;
 
 	@GetMapping(value = "/send")
+
 	@Operation(summary = "Push Message Back to Line")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Message Send OK!", 
