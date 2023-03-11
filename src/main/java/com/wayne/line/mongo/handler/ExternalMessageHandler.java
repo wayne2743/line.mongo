@@ -14,32 +14,22 @@ import com.wayne.line.mongo.service.LineMessageItemService;
 @LineMessageHandler
 @Component
 public class ExternalMessageHandler {
-		
-	  @Autowired
-	  LineMessageItemService lineMessageItemService;
-	
-//	  @EventMapping
-//	  public TextMessage handleTextMessageEvent(MessageEvent<TextMessageContent> event) {
-//	    // 這邊做的就是簡單的 echo
-//	    System.out.println("event: " + event);
-//	    return new TextMessage(event.getMessage().getText());
-//	  }
 
-	  @EventMapping
-	  public void handleTextMessageEvent(MessageEvent<TextMessageContent> event) {
-		  
-	    // 這邊做的就是簡單的 echo
-	    System.out.println("event: " + event);
-	    lineMessageItemService.create(new LineMessageItem(event.getSource().getUserId(), 
-	    												  event.getMessage().getText(), 
-	    												  event.getTimestamp().toEpochMilli()));
-	    
-	  }
-	  
-	  
-	  @EventMapping
-	  public void handleDefaultMessageEvent(Event event) {
-	    // 就是加入聊天室, 離開聊天室, 還有一些有的沒的事件
-	    System.out.println("event: " + event);
-	  }
+	@Autowired
+	LineMessageItemService lineMessageItemService;
+
+	@EventMapping
+	public void handleTextMessageEvent(MessageEvent<TextMessageContent> event) {
+
+		System.out.println("event: " + event);
+		lineMessageItemService.create(new LineMessageItem(event.getSource().getUserId(), event.getMessage().getText(),
+				event.getTimestamp().toEpochMilli()));
+
+	}
+
+	@EventMapping
+	public void handleDefaultMessageEvent(Event event) {
+
+		System.out.println("event: " + event);
+	}
 }
