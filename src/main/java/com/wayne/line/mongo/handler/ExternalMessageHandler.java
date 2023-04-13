@@ -24,7 +24,7 @@ public class ExternalMessageHandler {
 		System.out.println("event: " + event);
 		lineMessageItemService.create(new LineMessageItem(event.getSource().getUserId(), event.getMessage().getText(),
 				event.getTimestamp().toEpochMilli()));
-
+		
 	}
 
 	@EventMapping

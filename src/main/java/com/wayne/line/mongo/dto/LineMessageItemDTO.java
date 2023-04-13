@@ -4,11 +4,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import com.wayne.line.mongo.model.LineMessageItem;
 import com.wayne.line.mongo.repository.LineMessageItemRepository;
 
+@Configuration
 @Component
 public class LineMessageItemDTO {
 	
